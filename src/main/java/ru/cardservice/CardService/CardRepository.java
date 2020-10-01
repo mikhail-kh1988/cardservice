@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class CardRepository {
+public class CardRepository{
     private static final Map<Long, Card> cards = new HashMap<>();
     public void addCard(String cardholder, long accountNumber){
         Card card = new Card();
