@@ -19,8 +19,17 @@ public class Card {
     private String actualDate;
     private Paysystem paySystem;
     private long accountNumber;
+    private boolean status;
 
     public Card() {
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Integer getID() {
