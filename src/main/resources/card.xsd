@@ -37,6 +37,15 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:complexType name="bill">
+        <xs:sequence>
+            <xs:element name="cardholder_fio" type="xs:string"/>
+            <xs:element name="current_account_balance" type="xs:int"/>
+            <xs:element name="sum_operation" type="xs:int"/>
+            <xs:element name="date_operation" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:element name="getCardInfoRequest">
         <xs:complexType>
             <xs:sequence>
@@ -65,6 +74,32 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="CountCard" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPayRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cardholdernumber" type="xs:long"/>
+                <xs:element name="pay_sum" type="xs:int"/>
+                <xs:element name="recipientcardnumber" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPayResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bill" type="tns:bill"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="responseErrorPay">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="messageError" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

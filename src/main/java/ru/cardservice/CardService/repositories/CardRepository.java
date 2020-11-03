@@ -7,9 +7,13 @@ import org.springframework.data.repository.Repository;
 import ru.cardservice.CardService.models.Card;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<Card, Integer> {
     List<Card> findByCardholder(String cardholder);
-    List<Card> findByAccountNumber(long accountNumber);
+    //List<Card> findByAccountNumber(long accountNumber);
+    Card findByAccountNumber(long accountNumber);
+    long findAccountNumberByCardnumber(long cardnumber);
+    Optional<Card> findByCardnumber(long cardNumber);
 
 }
