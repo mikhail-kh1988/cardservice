@@ -48,6 +48,14 @@ public class CardServiceEndpoint {
         //response.setCard((io.spring.guides.gs_producing_web_service.Card) cardRepository.findById(1));
         //response.setCard(cardRepository.findCardByAccount(registerCard.getAccountNumber()));
         cardRepository.getOne(card.getID());
+        io.spring.guides.gs_producing_web_service.Card tmpCard = new io.spring.guides.gs_producing_web_service.Card();
+        Card getCard = cardRepository.findByAccountNumber(registerCard.getAccountNumber());
+        tmpCard.setCardnumber(getCard.getCardnumber());
+        tmpCard.setCvvCode(getCard.getCvvCode());
+        tmpCard.setActualDate(getCard.getActualDate());
+        tmpCard.setPaySystem(getCard.getPaySystem());
+        tmpCard.setCardholder(getCard.getCardholder());
+        response.setCard(tmpCard);
         return response;
     }
 

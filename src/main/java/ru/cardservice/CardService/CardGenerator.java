@@ -6,16 +6,21 @@ import java.util.Random;
 
 class CardGenerator {
 
+    private static Random random = new Random();
+
     public static long getCardNumber(){
-        return new Random(99999999).nextLong();
+        return (long)random.nextInt(999999999);
     }
 
     public static int getCVVcode(){
-        return new Random(999).nextInt();
+        int temp = random.nextInt(999);
+        if (temp <= 99)
+            temp = random.nextInt(999);
+        return temp;
     }
 
     public static Paysystem getCardPaySystem(){
-        switch (new Random(4).nextInt()){
+        switch (random.nextInt(4)){
             case 1: return Paysystem.MASTERCARD;
             case 2: return Paysystem.UNIONPAY;
             case 3: return Paysystem.MIR;
